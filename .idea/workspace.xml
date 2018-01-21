@@ -322,12 +322,21 @@
       <updated>1359379246138</updated>
       <workItem from="1359379250712" duration="1302000" />
       <workItem from="1516487174398" duration="113000" />
+<<<<<<< Updated upstream
       <workItem from="1516487416859" duration="41000" />
+=======
+      <workItem from="1516487416859" duration="1831000" />
+      <workItem from="1516534676655" duration="2287000" />
+>>>>>>> Stashed changes
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< Updated upstream
     <option name="totallyTimeSpent" value="1456000" />
+=======
+    <option name="totallyTimeSpent" value="5533000" />
+>>>>>>> Stashed changes
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1301" height="772" extended-state="6" />
