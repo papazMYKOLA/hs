@@ -10,11 +10,13 @@ import javafx.scene.control.ChoiceBox;
 import javafx.stage.Stage;
 
 public class Controller extends Main{
-    Scene stage = new Scene(createContent(4));
-    public void  startPress (){
+    int number=2;
 
+
+    public void  startPress (){
+        number= Integer.parseInt(player.getValue().toString());
         Stage primaryStage = new Stage();
-        primaryStage.setScene(stage);
+        primaryStage.setScene(new Scene(createContent(number)));
         primaryStage.show();
 
     }
@@ -40,4 +42,6 @@ public class Controller extends Main{
         player.setValue("2");
 
     }
+
+
 }
