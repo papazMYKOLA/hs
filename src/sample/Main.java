@@ -7,9 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-
 import java.util.Arrays;
-
 import static sample.Main.MoveType.None;
 import static sample.Main.MoveType.Normal;
 
@@ -17,18 +15,20 @@ public class Main extends Application {
 
     private Group tileGroup = new Group();
     private Group pieceGroup = new Group();
-
+    public Pane root = new Pane();
     private Tile[][] board = new Tile[25][17];
-
+    int[] x={0,0,1,1,2,2,2,2,3,3,3,3,4,4,4,4,4,5,5,5,5,6,6,6,6,6,7,7,7,7,8,8,8,8,8,9,9,9,9,9,9,10,10,10,10,10,10,10,11,11,11,11,11,11,11,11,12,12,12,12,12,12,12,12,12,
+            24,24,23,23,22,22,22,22,21,21,21,21,20,20,20,20,20,19,19,19,19,18,18,18,18,18,17,17,17,17,16,16,16,16,16,15,15,15,15,15,15,14,14,14,14,14,14,14,13,13,13,13,13
+            ,13,13,13};
+    int[] y={4,12,5,11,4,6,10,12,5,7,9,11,4,6,8,10,12,5,7,9,11,4,6,8,10,12,5,7,9,11,4,6,8,10,12,3,5,7,9,11,13,2,4,6,8,10,12,14,1,3,5,7,9,11,13,15,0,2,4,6,8,10,12,14,16,
+            4,12,5,11,4,6,10,12,5,7,9,11,4,6,8,10,12,5,7,9,11,4,6,8,10,12,5,7,9,11,4,6,8,10,12,3,5,7,9,11,13,2,4,6,8,10,12,14,1,3,5,7,9,11,13,15};
     //how to read .properties file java
+
     public Parent createContent(int players){
         Pane root = new Pane();
+
         root.setPrefSize(600, 680);
-        int[] x={0,0,1,1,2,2,2,2,3,3,3,3,4,4,4,4,4,5,5,5,5,6,6,6,6,6,7,7,7,7,8,8,8,8,8,9,9,9,9,9,9,10,10,10,10,10,10,10,11,11,11,11,11,11,11,11,12,12,12,12,12,12,12,12,12,
-                24,24,23,23,22,22,22,22,21,21,21,21,20,20,20,20,20,19,19,19,19,18,18,18,18,18,17,17,17,17,16,16,16,16,16,15,15,15,15,15,15,14,14,14,14,14,14,14,13,13,13,13,13
-                ,13,13,13};
-        int[] y={4,12,5,11,4,6,10,12,5,7,9,11,4,6,8,10,12,5,7,9,11,4,6,8,10,12,5,7,9,11,4,6,8,10,12,3,5,7,9,11,13,2,4,6,8,10,12,14,1,3,5,7,9,11,13,15,0,2,4,6,8,10,12,14,16,
-                4,12,5,11,4,6,10,12,5,7,9,11,4,6,8,10,12,5,7,9,11,4,6,8,10,12,5,7,9,11,4,6,8,10,12,3,5,7,9,11,13,2,4,6,8,10,12,14,1,3,5,7,9,11,13,15};
+
         for(int i=0; i<121; i++){
             Tile tile = new Tile(x[i],y[i]);
             tile.setTranslateX(x[i]*3);
@@ -104,9 +104,13 @@ public class Main extends Application {
     }
 
     private MoveResult tryMove(Piece piece, int newX, int newY){
+
+
         if (Arrays.asList(board[newX][newY]).contains(null)){
             return new MoveResult(sample.MoveType.None);
         }
+
+
         if (board[newX][newY].hasPiece()) {
             return new MoveResult(sample.MoveType.None);
         }
@@ -154,7 +158,8 @@ public class Main extends Application {
 
             switch (result.getType()){
                 case None:
-                    piece.abortMove();
+                { piece.abortMove();
+                    }
                     break;
                 case Normal:
                     piece.move(newX, newY);
@@ -164,6 +169,7 @@ public class Main extends Application {
 
             }
         });
+
 
         return piece;
     }

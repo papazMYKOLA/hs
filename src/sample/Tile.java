@@ -9,7 +9,10 @@ public class Tile extends Circle{
     private Piece piece;
 
     public boolean hasPiece(){
-        return piece != null;
+
+        if(piece!=null)
+        return true;
+        else return false;
     }
 
     public Piece getPiece(){
@@ -26,6 +29,9 @@ public class Tile extends Circle{
         relocate(x * 20, y * 20);
 
         setFill(Color.BROWN);
+    }
+    public void hasTile (){
+
     }
 
 }

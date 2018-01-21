@@ -8,28 +8,48 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane dividerPositions="0.5217391304347826" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="459.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<SplitPane dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="459.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
     <items>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
             <children>
                 <ListView layoutX="25.0" layoutY="57.0" prefHeight="372.0" prefWidth="255.0" />
-                <Label layoutX="93.0" layoutY="25.0" prefHeight="32.0" prefWidth="125.0" text="Free lobby ">
+                <Label layoutX="93.0" layoutY="25.0" prefHeight="32.0" prefWidth="141.0" text="Free lobby ">
                     <font>
                         <Font name="System Bold" size="22.0" />
                     </font>
                 </Label>
             </children></AnchorPane>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="486.0" prefWidth="282.0">
             <children>
-                <ChoiceBox layoutX="66.0" layoutY="107.0" prefWidth="150.0" />
-                <Label layoutX="76.0" layoutY="27.0" prefHeight="32.0" prefWidth="131.0" text="Game Menu">
+                <ChoiceBox fx:id="player" layoutX="66.0" layoutY="107.0" prefWidth="150.0" />
+                <Label layoutX="76.0" layoutY="27.0" prefHeight="32.0" prefWidth="150.0" text="Game Menu">
                     <font>
                         <Font name="System Bold" size="22.0" />
                     </font>
                 </Label>
-                <ChoiceBox layoutX="67.0" layoutY="171.0" prefWidth="150.0" />
-                <ChoiceBox layoutX="66.0" layoutY="236.0" prefWidth="150.0" />
-                <Button layoutX="83.0" layoutY="307.0" mnemonicParsing="false" onAction="#startPress" prefHeight="68.0" prefWidth="113.0" rotate="1.0" text="Button" />
-            </children></AnchorPane>
+                <ChoiceBox fx:id="bot" layoutX="66.0" layoutY="169.0" prefWidth="150.0" />
+                <ChoiceBox fx:id="rule" layoutX="66.0" layoutY="229.0" prefWidth="150.0" />
+                <Button fx:id="start" layoutX="83.0" layoutY="307.0" mnemonicParsing="false" onAction="#startPress" prefHeight="68.0" prefWidth="113.0" rotate="1.0" text="Start">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+            </Button>
+            <Label layoutX="66.0" layoutY="76.0" prefHeight="31.0" prefWidth="150.0" text="Numbers of Players">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="66.0" layoutY="138.0" prefHeight="31.0" prefWidth="150.0" text="Numbers of Bots">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="66.0" layoutY="200.0" prefHeight="31.0" prefWidth="150.0" text="Rule">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            </children>
+      </AnchorPane>
     </items>
 </SplitPane>
