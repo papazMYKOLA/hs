@@ -8,7 +8,7 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 public class Controller extends Main{
-    Scene stage = new Scene(createContent());
+    Scene stage = new Scene(createContent(6));
     public void  startPress (){
 
         Stage primaryStage = new Stage();

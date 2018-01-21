@@ -8,6 +8,8 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import java.util.Arrays;
+
 import static sample.Main.MoveType.None;
 import static sample.Main.MoveType.Normal;
 
@@ -19,7 +21,7 @@ public class Main extends Application {
     private Tile[][] board = new Tile[25][17];
 
     //how to read .properties file java
-    public Parent createContent(){
+    public Parent createContent(int players){
         Pane root = new Pane();
         root.setPrefSize(600, 680);
         int[] x={0,0,1,1,2,2,2,2,3,3,3,3,4,4,4,4,4,5,5,5,5,6,6,6,6,6,7,7,7,7,8,8,8,8,8,9,9,9,9,9,9,10,10,10,10,10,10,10,11,11,11,11,11,11,11,11,12,12,12,12,12,12,12,12,12,
@@ -32,27 +34,60 @@ public class Main extends Application {
             tile.setTranslateX(x[i]*3);
             tile.setTranslateY(y[i]*20);
             board[x[i]][y[i]] = tile;
-
             Piece piece =null;
-            if (y[i]<=3) {
-                piece = makePiece(PieceType.BLUE, x[i], y[i]);
+            if (players==6){
+                if (y[i]<=3) {
+                    piece = makePiece(PieceType.BLUE, x[i], y[i]);
+                }
+                if (y[i]>=13) {
+                    piece = makePiece(PieceType.GREEN, x[i], y[i]);
+                }
+                if (y[i]+x[i]<=10) {
+                    piece = makePiece(PieceType.ORANGE, x[i], y[i]);
+                }
+                if (y[i]-x[i]>=6) {
+                    piece = makePiece(PieceType.YELLOW, x[i], y[i]);
+                }
+                if (y[i]-x[i]<=-14) {
+                    piece = makePiece(PieceType.GREY, x[i], y[i]);
+                }
+                if (y[i]+x[i]>=30) {
+                    piece = makePiece(PieceType.WHITE, x[i], y[i]);
+                }
             }
-            if (y[i]>=13) {
-                piece = makePiece(PieceType.GREEN, x[i], y[i]);
+            if (players==4){
+                if (y[i]>=13) {
+                    piece = makePiece(PieceType.GREEN, x[i], y[i]);
+                }
+                if (y[i]<=3) {
+                    piece = makePiece(PieceType.BLUE, x[i], y[i]);
+                }
+                if (y[i]+x[i]<=10) {
+                    piece = makePiece(PieceType.ORANGE, x[i], y[i]);
+                }
+                if (y[i]+x[i]>=30) {
+                    piece = makePiece(PieceType.WHITE, x[i], y[i]);
+                }
             }
-            if (y[i]+x[i]<=10) {
-                piece = makePiece(PieceType.ORANGE, x[i], y[i]);
+            if (players==3){
+                if (y[i]>=13) {
+                    piece = makePiece(PieceType.GREEN, x[i], y[i]);
+                }
+                if (y[i]+x[i]<=10) {
+                    piece = makePiece(PieceType.ORANGE, x[i], y[i]);
+                }
+                if (y[i]-x[i]<=-14) {
+                    piece = makePiece(PieceType.GREY, x[i], y[i]);
+                }
             }
-            if (y[i]-x[i]>=6) {
-                piece = makePiece(PieceType.YELLOW, x[i], y[i]);
+            if (players==2){
+                if (y[i]>=13) {
+                    piece = makePiece(PieceType.GREEN, x[i], y[i]);
+                }
+                if (y[i]<=3) {
+                    piece = makePiece(PieceType.BLUE, x[i], y[i]);
+                }
             }
-            if (y[i]-x[i]<=-14) {
-                piece = makePiece(PieceType.GREY, x[i], y[i]);
-            }
-            if (y[i]+x[i]>=30) {
-                piece = makePiece(PieceType.WHITE, x[i], y[i]);
-            }
-
 
             if (piece!=null){
                 tile.setPiece(piece);
@@ -69,6 +104,9 @@ public class Main extends Application {
     }
 
     private MoveResult tryMove(Piece piece, int newX, int newY){
+        if (Arrays.asList(board[newX][newY]).contains(null)){
+            return new MoveResult(sample.MoveType.None);
+        }
         if (board[newX][newY].hasPiece()) {
             return new MoveResult(sample.MoveType.None);
         }
