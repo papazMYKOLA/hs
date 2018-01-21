@@ -1,24 +1,27 @@
 package sample;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
+
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
+
 import javafx.scene.control.ChoiceBox;
 import javafx.stage.Stage;
 
 public class Controller extends Main{
-    int number=2;
-
+        int players;
+        int bots;
+        int sum;
 
     public void  startPress (){
-        number= Integer.parseInt(player.getValue().toString());
-        Stage primaryStage = new Stage();
-        primaryStage.setScene(new Scene(createContent(number)));
-        primaryStage.show();
-
+        players = Integer.parseInt(player.getValue().toString());
+        bots = Integer.parseInt(bot.getValue().toString());
+        sum = players + bots;
+        if(sum==2 || sum==3 || sum==4 || sum==6) {
+            Stage primaryStage = new Stage();
+            primaryStage.setScene(new Scene(createContent(sum)));
+            primaryStage.show();
+        }
     }
 
     @FXML
@@ -32,7 +35,12 @@ public class Controller extends Main{
 
     @FXML
     public void initialize() {
-
+        bot.getItems().add("0");
+        bot.getItems().add("1");
+        bot.getItems().add("2");
+        bot.getItems().add("3");
+        bot.getItems().add("4");
+        bot.getItems().add("5");
         player.getItems().add("1");
         player.getItems().add("2");
         player.getItems().add("3");
@@ -40,7 +48,7 @@ public class Controller extends Main{
         player.getItems().add("5");
         player.getItems().add("6");
         player.setValue("2");
-
+        bot.setValue("0");
     }
 
 
