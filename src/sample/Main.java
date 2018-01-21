@@ -19,7 +19,7 @@ public class Main extends Application {
     private Tile[][] board = new Tile[25][17];
 
     //how to read .properties file java
-    private Parent createContent(){
+    public Parent createContent(){
         Pane root = new Pane();
         root.setPrefSize(600, 680);
         int[] x={0,0,1,1,2,2,2,2,3,3,3,3,4,4,4,4,4,5,5,5,5,6,6,6,6,6,7,7,7,7,8,8,8,8,8,9,9,9,9,9,9,10,10,10,10,10,10,10,11,11,11,11,11,11,11,11,12,12,12,12,12,12,12,12,12,
@@ -96,9 +96,9 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        primaryStage.setScene(new Scene(createContent()));
+        Parent root = FXMLLoader.load(getClass().getResource("menu.fxml"));
+        primaryStage.setScene(new Scene(root,600,449));
         primaryStage.show();
-        primaryStage.setTitle("Checkers");
 
     }
 
